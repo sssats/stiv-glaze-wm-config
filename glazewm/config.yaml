@@ -185,11 +185,16 @@ window_rules:
       - window_process: { equals: "Figma" }
 
   # Всё остальное → workspace 7 и переключиться на него
+  # Исключаем: привязанные приложения, системные процессы, диалоговые окна (#32770)
   - commands: ["move --workspace 7", "focus --workspace 7"]
     match:
       - window_process:
           {
-            not_regex: "chrome|rider64|ms-teams|Fork|Figma|zebar|ShellExperienceHost|StartMenuExperienceHost|SearchHost|TextInputHost",
+            not_regex: "chrome|rider64|ms-teams|Fork|Figma|zebar|ShellExperienceHost|StartMenuExperienceHost|SearchHost|TextInputHost|CredentialUIBroker|consent|SystemSettings|ApplicationFrameHost",
+          }
+        window_class:
+          {
+            not_regex: "#32770|Credential|OperationStatusWindow",
           }
 
   - commands: ["ignore"]

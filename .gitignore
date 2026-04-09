@@ -1,0 +1,8 @@
+# Logs
+zebar/errors.log
+glazewm/errors.log
+
+# Zebar marketplace cache
+zebar/.marketplace/
+
+# GlazeWM не нужно игнорировать — весь конфиг важен
